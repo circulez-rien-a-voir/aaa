@@ -11,34 +11,25 @@ void	ft_write_comb (char first_digit, char second_digit, char last_digit)
 void	ft_print_comb(void)
 {
 	int i;
-	char first_digit;
-	char second_digit;
-	char last_digit;
+	char comb[3];
 
-	i = 10;
+	i = 12;
 
 	while (i < 789)
 	{	
-		if (i < 100)
-		{
-			second_digit = i / 10 + '0';
-		}
-		else
-		{
-			second_digit = (i / 10) % 10 + '0'; 
-		}
-		first_digit = i / 100 + '0';
-		last_digit = i % 10 + '0';
+		comb[1] =((i < 100) ? i / 10 : (i/10) % 10) + '0';
+		comb[0] = i / 100 + '0';
+		comb[2] = i % 10 + '0';
 
-		if (	first_digit != second_digit && first_digit != last_digit &&	
-				second_digit != last_digit && first_digit < second_digit &&
-				second_digit < last_digit )
+		if (	comb[0] != comb[1] && comb[0] != comb[2] &&	
+				comb[1] != comb[2] && comb[0] < comb[1] &&
+				comb[1] < comb[2] )
 		{
-			ft_write_comb(first_digit, second_digit, last_digit);
+			ft_write_comb(comb[0], comb[1], comb[2]);
 		}
 		i++;
 	}
-	write(1, "789", 4);
+	write(1, "789", 3);
 }
 int main(void)
 {
