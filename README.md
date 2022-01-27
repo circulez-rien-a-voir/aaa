@@ -1,2 +1,1 @@
-# training
-# aaa
+# GO AWAY.
