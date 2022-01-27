@@ -13,6 +13,7 @@ void ft_format_comb2(char comb[5], int i, int j)
 	}
 	if(i - j == 1 && i + j == 197)
 	{
+		return;
 	}
 	else
 	{
