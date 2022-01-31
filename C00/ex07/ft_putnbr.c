@@ -10,44 +10,63 @@ int length_of_int(int nb)
 	{
 		nb *= -1;
 	}
+	else if(nb == 0)
+	{
+		return (1);
+	}
 	while(nb)
 	{
 		nb /= 10;
 		length++;
 	}
-	length += '0';
-	write(1, "length: ", 8);
-	write(1, &length, 1);
-	write(1, "   ", 3);
 	return (length);
+}
+
+int is_negative(int nb)
+{
+	int negative;
+	
+	negative = 0;
+	if (nb < 0)
+	{
+		negative = 1;		
+	}
+	return (negative);
+}
+
+int abs_value(int nb)
+{
+	if (nb < 0)
+	{
+		return (nb * -1);		
+	}
+	else
+	{
+		return (nb);	
+	}
 }
 
 void ft_putnbr(int nb)
 {
 	int length;
 	char temp_char;
-	int temp_int;
+	long temp_int;
 	int i;
-	//int j;
-	
+	 	
 	length = length_of_int(nb);
-	//length = 4;
-	//j = length;
-
+	
+	write(1, is_negative(nb) ? "-" : "", 1);
 	while (length > 0)
 	{
 		i = length - 1;
-		temp_int = nb;
-		
+		temp_int = abs_value(nb) ;	
+
 		while ( i > 0)
 		{	
-			//write(1, " i= ", 4);
-			//write(1, &i, 1);
-			//write(1, ", ", 2);
 			temp_int /= 10;	
 			i--;
 		} 
-		temp_char = temp_int % 10 + '0'; 
+		temp_char = temp_int  % 10 + '0'; 
 		write(1, &temp_char, 1);
 		length--;
 	}
@@ -55,5 +74,16 @@ void ft_putnbr(int nb)
 
 int main(void)
 {
-	ft_putnbr(1234);
+	ft_putnbr(123456);
+	write(1, "\n",2);
+	ft_putnbr(42);
+	write(1, "\n",2);
+	ft_putnbr(-1);
+	write(1, "\n",2);
+	ft_putnbr(0);
+	write(1, "\n",2);
+	ft_putnbr(-32767);
+	write(1, "\n",2);
+	ft_putnbr(32767);
+	return (0);	
 }
